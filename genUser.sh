@@ -1,8 +1,6 @@
 #!/bin/bash  
 
-# input_file=$1
 
-# if [$input_file == "3"]; then echo "gg" ; else echo "ggwp" fi
 
 
 
@@ -38,9 +36,6 @@ else
     do
         user_name=${user_txt_content[$i]}
         branch=${user_txt_content[$i+1]}
-        # sudo useradd -d $path/$user_name -m $user_name
-        # cd try_usr3
-        # echo "yo i'm in"
         if ! [[ -d "$path/$branch" ]];
         then
             mkdir $branch
@@ -71,23 +66,6 @@ else
         fi
     done
 fi
-
-#/home/shubham/Desktop/Codes
-
-
-
-
-
-
-
-
-
-# if [ -r $input_file ];
-# then
-#     echo "hi"
-# else
-#     echo "bye"
-# fi
 
 
 
