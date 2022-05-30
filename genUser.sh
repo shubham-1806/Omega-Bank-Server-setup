@@ -30,6 +30,7 @@ then
         cd $path
     fi
     mkdir Omege_Bank
+    chmod a+x Omega_Bank
     cd Omege_Bank
 else
     if [ -r "$input_file" ];
@@ -40,18 +41,24 @@ else
         then
             cd $path
         fi
-        mkdir Omege_Bank
-        cd Omege_Bank
+        mkdir Omega_Bank
+        cd Omega_Bank
         for (( i = 0 ; i < ${#user_txt_content[@]} ; i+=5))
         do
             user_name=${user_txt_content[$i]}
             branch=${user_txt_content[$i+1]}
-            if ! [[ -d "$path/$branch" ]];
+            if ! [[ -d "$path/Omega_Bank/$branch" ]];
             then
                 mkdir $branch
+                chmod a+x $branch
                 cd $branch
-                sudo useradd -d $PWD $branch
+                sudo useradd -d $PWD -s /bin/bash $branch
+                touch Branch_Current_Balance.txt
+                touch Branch_Transaction_History.txt
+                setfacl --set user::rwx,group::---,other:---,mask:rwx,user:$branch:rwx Branch_Current_Balance.txt
+                setfacl --set user::rwx,group::---,other:---,mask:rwx,user:$branch:rwx Branch_Transaction_History.txt
                 mkdir $user_name
+                chmod a+x $user_name
                 cd $user_name
                 sudo useradd -d $PWD $user_name
                 touch Current_balance.txt
@@ -67,8 +74,9 @@ else
             else
                 cd $branch
                 mkdir $user_name
+                chmod a+x $user_name
                 cd $user_name
-                sudo useradd -d $PWD $user_name
+                sudo useradd -d $PWD -s /bin/bash $user_name
                 touch Current_balance.txt
                 echo "500">Current_balance.txt
                 chmod 700 Current_balance.txt

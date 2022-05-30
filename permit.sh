@@ -17,7 +17,7 @@ else
     fi
 fi
 
-if ! [ $PWD == $path];
+if ! [ $PWD == $path ];
 then
     cd $path
 fi
@@ -27,7 +27,7 @@ for branch in */ ; do
     for user_name in */ ; do
         cd $user_name
         for file in * ; do
-            setfacl --set user::rw-,group::---,other:---,mask:rw-,user:${user_name::-1}:r--,user:${branch::-1}:rw- $file
+            setfacl --set user::rwx,group::---,other:---,mask:rwx,user:${user_name::-1}:r-x,user:${branch::-1}:rwx $file
         done
         cd ..
     done
