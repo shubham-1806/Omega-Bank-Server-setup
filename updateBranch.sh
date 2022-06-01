@@ -11,7 +11,6 @@ for user_name in */ ; do
     typeset -i curr_bal=${bal[0]}
     sum=$sum+$curr_bal
     cd ..
-    echo ${#tran_hist[@]}
     for (( i = 0 ; i < ${#tran_hist[@]} ; i++))
     do
         echo ${tran_hist[$i]}>> Branch_Transaction_History.txt
@@ -19,6 +18,11 @@ for user_name in */ ; do
 done
 
 echo $sum>Branch_Current_Balance.txt
+
+
+
+
+
 
 
 
