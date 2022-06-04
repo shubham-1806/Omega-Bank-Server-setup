@@ -27,7 +27,7 @@ The generate_aliases generates the required aliases for the CEO in .bash_aliases
 
 Here is an example of the system
 
-*Omega_Bank
+```*Omega_Bank
     *branch1
         *daily_interest_rates
         *branch_current_balance
@@ -38,7 +38,7 @@ Here is an example of the system
             *transaction_history
         *user2.......
     *branch2....
-
+```
 
 An example system has been uploaded
 
